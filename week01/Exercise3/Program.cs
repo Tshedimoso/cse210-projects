@@ -8,10 +8,7 @@ class Program
         string userInput = Console.ReadLine();
         int randomNumber = int.Parse(userInput);
 
-
-        
         int guess = -1 ;
-
 
         while (guess != randomNumber)
         {
