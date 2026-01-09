@@ -8,26 +8,32 @@ class Program
         string userInput = Console.ReadLine();
         int randomNumber = int.Parse(userInput);
 
-        Console.Write("What is your guess? ");
-        string userGuess = Console.ReadLine();
-        int guess = int.Parse(userGuess);
 
-        if (guess == randomNumber)
+        
+        int guess = -1 ;
+
+
+        while (guess != randomNumber)
         {
-            Console.WriteLine("You guessed it!");
+            Console.Write("What is your guess? ");
+            string userGuess = Console.ReadLine();
+            guess = int.Parse(userGuess);
+            if (guess == randomNumber)
+            {
+                Console.WriteLine("You guessed it!");
+            }
+
+            else if (guess >= randomNumber)
+            {
+                Console.WriteLine("Lower");
+                
+            }
+
+            else
+            {
+                Console.WriteLine("Higher");
+                
+            }
         }
-
-        else if (guess >= randomNumber)
-        {
-            Console.WriteLine("Lower");
-        }
-
-        else
-        {
-            Console.WriteLine("Higher");
-        }
-
-
-
     }
 }
