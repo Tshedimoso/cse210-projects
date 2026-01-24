@@ -5,10 +5,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Welcome to the Journal Program!");
-        int choice = -1;
+        Journal journal = new Journal();
+        PromptGenerator promptGenerator = new PromptGenerator();
 
-        while (choice != 5)
+        bool running = true;
+
+        while (running)
         {
             Console.WriteLine("Please select one of the following choices:");
             Console.WriteLine("1. Write");
@@ -17,36 +19,47 @@ class Program
             Console.WriteLine("4. Save");
             Console.WriteLine("5. Quit");
             Console.Write("What would you like to do? ");
-            string userChoice = Console.ReadLine();
-            choice = int.Parse(userChoice);
 
-            if (choice == 1)
-            {
-                Console.WriteLine("Hooray!");
-            }
-            
-            else if (choice == 2)
-            {
-                Console.WriteLine("Yay!");
-            }
+            string choice = Console.ReadLine();
+            Console.WriteLine();
 
-            else if (choice == 3)
+            if (choice == "1")
             {
-                Console.WriteLine("Good!");
-            }
+                string prompt = promptGenerator.GetRandomPrompt();
+                Console.WriteLine(prompt);
+                Console.Write("> ");
+                string response = Console.ReadLine();
 
-            else if (choice == 4)
+                string date = DateTime.Now.ToShortDateString();
+                Entry entry = new Entry(date, prompt, response);
+                journal.AddEntry(entry);
+            }
+            else if (choice == "2")
             {
-                Console.WriteLine("Very Good!");
+                journal.DisplayAll();
             }
-
+            else if (choice == "3")
+            {
+                Console.Write("What is the filename? ");
+                string loadFile = Console.ReadLine();
+                journal.LoadFromFile(loadFile);
+            }
+            else if (choice == "4")
+            {
+                Console.Write("What is the filename? ");
+                string saveFile = Console.ReadLine();
+                journal.SaveToFile(saveFile);
+            }
+            else if (choice == "5")
+            {
+                running = false;
+            }
             else
             {
-                
+                Console.WriteLine("Invalid choice. Please try again.");
             }
 
-
+            Console.WriteLine();
         }
-
     }
 }
