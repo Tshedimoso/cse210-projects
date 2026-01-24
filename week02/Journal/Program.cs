@@ -5,6 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.WriteLine("Welcome to the Journal Program");
         Journal journal = new Journal();
         PromptGenerator promptGenerator = new PromptGenerator();
 
