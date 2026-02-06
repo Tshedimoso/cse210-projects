@@ -27,7 +27,20 @@ class Program
 
         List<Video>videos = new List<Video>{video1, video2, video3};
 
-        
+        foreach (Video video in videos)
+        {
+            Console.WriteLine($"Title: {video.Title}");
+            Console.WriteLine($"Author: {video.Author}");
+            Console.WriteLine($"Length: {video.LengthInSeconds} seconds");
+            Console.WriteLine($"Number of Comments: {video.GetNumberOfComments()}");
+
+            Console.WriteLine("Comments:");
+            foreach (Comment comment in video.GetComments())
+            {
+                Console.WriteLine($"- {comment.CommenterName}: {comment.Text}");
+            }
+
+            Console.WriteLine();}
 
     }
 }
