@@ -4,6 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
+        // Exceeding Requirements:
+       // - Added a fourth activity: GratitudeActivity
+       
         string choice = "";
 
         while (choice != "4")
@@ -14,6 +17,7 @@ class Program
             Console.WriteLine("1. Breathing Activity");
             Console.WriteLine("2. Reflection Activity");
             Console.WriteLine("3. Listing Activity");
+            Console.WriteLine("4. Gratitude Activity");
             Console.WriteLine("4. Quit");
             Console.Write("Select a choice from the menu: ");
 
@@ -33,6 +37,9 @@ class Program
                     activity = new ListingActivity();
                     break;
                 case "4":
+                    activity = new GratitudeActivity();
+                    break;
+                case "5":
                     Console.WriteLine("Goodbye!");
                     break;
                 default:
